@@ -8,6 +8,15 @@ endif
 " tabs and spaces
 autocmd FileType yml setlocal ai ts=2 sw=2 et
 
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
 " visual
 set number
 set showcmd
@@ -31,10 +40,10 @@ inoremap jk <esc>
 
 call plug#begin('~/.vim/plugged')
 " Put your plugins here.
+Plug 'patstockwell/vim-monokai-tasty'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rakr/vim-one'
 Plug 'pearofducks/ansible-vim'
-Plug 'yggdroot/indentline'
 Plug 'sickill/vim-monokai'
 call plug#end()
 
@@ -42,8 +51,8 @@ if executable('rg')
           let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
   endif
 
-colorscheme monokai
-set background=dark
+colorscheme vim-monokai-tasty 
+" set background=dark
 
 let g:indentLine_char = '┊'
 au BufRead,BufNewFile */inventories/*/*.yml set filetype=yaml.ansible

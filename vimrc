@@ -40,7 +40,6 @@ inoremap jk <esc>
 
 call plug#begin('~/.vim/plugged')
 " Put your plugins here.
-Plug 'patstockwell/vim-monokai-tasty'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rakr/vim-one'
 Plug 'pearofducks/ansible-vim'
@@ -52,8 +51,8 @@ if executable('rg')
           let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
   endif
 
-colorscheme vim-monokai-tasty 
-" set background=dark
+" colorscheme vim-monokai 
+set background=dark
 
 let g:indentLine_char = '┊'
 au BufRead,BufNewFile *.yml set filetype=yaml.ansible

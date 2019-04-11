@@ -36,6 +36,7 @@ Plug 'rakr/vim-one'
 Plug 'pearofducks/ansible-vim'
 Plug 'yggdroot/indentline'
 Plug 'sickill/vim-monokai'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 if executable('rg')
@@ -46,4 +47,14 @@ colorscheme monokai
 set background=dark
 
 let g:indentLine_char = '┊'
-au BufRead,BufNewFile */inventories/*/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile *.yml set filetype=yaml.ansible
+
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0

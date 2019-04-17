@@ -1,13 +1,16 @@
 syntax enable
 
+" required for wsl terminal
 if &term =~ '256color'
 	set term=screen-256color
         set t_ut=
 endif
 
-" tabs and spaces
+" tabs and spaces for yml files
 autocmd FileType yml setlocal ai ts=2 sw=2 et
+au BufRead,BufNewFile *.yml set filetype=yaml.ansible
 
+" settings for python files
 au BufNewFile,BufRead *.py
     \ set tabstop=4
     \ set softtabstop=4
@@ -37,14 +40,15 @@ set foldmethod=indent
 
 " shortcuts
 inoremap jk <esc>
+cnoremap sudow w !sudo tee % >/dev/null
 
 call plug#begin('~/.vim/plugged')
 " Put your plugins here.
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rakr/vim-one'
 Plug 'pearofducks/ansible-vim'
-Plug 'sickill/vim-monokai'
 Plug 'vim-syntastic/syntastic'
+Plug 'gabrielelana/vim-markdown'
 call plug#end()
 
 if executable('rg')
@@ -54,15 +58,16 @@ if executable('rg')
 " colorscheme vim-monokai 
 set background=dark
 
-let g:indentLine_char = '┊'
-au BufRead,BufNewFile *.yml set filetype=yaml.ansible
-
 " syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" customizations for buffers
+set wildchar=<Tab> wildmenu wildmode=full
+set wildcharm=<C-Z>
+nnoremap <F10> :b <C-Z>

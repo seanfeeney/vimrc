@@ -1,11 +1,5 @@
 syntax enable
 
-" required for wsl terminal
-if &term =~ '256color'
-	set term=screen-256color
-        set t_ut=
-endif
-
 " tabs and spaces for yml files
 autocmd FileType yml setlocal ai ts=2 sw=2 et
 au BufRead,BufNewFile *.yml set filetype=yaml.ansible
@@ -49,13 +43,14 @@ Plug 'rakr/vim-one'
 Plug 'pearofducks/ansible-vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'gabrielelana/vim-markdown'
+Plug 'tomasr/molokai'
 call plug#end()
 
 if executable('rg')
           let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
   endif
 
-" colorscheme vim-monokai 
+colorscheme molokai 
 set background=dark
 
 " syntastic settings
@@ -71,3 +66,4 @@ let g:syntastic_check_on_wq = 0
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
 nnoremap <F10> :b <C-Z>
+
